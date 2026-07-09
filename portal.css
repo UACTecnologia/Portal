@@ -1,0 +1,187 @@
+/* ==========================================
+   1. RESETEO Y CONFIGURACIÓN BASE
+   ========================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Evita scrolls inesperados en la pantalla completa */
+    background-color: #f4f6f9;
+}
+
+/* Contenedor principal en Pantallas Grandes (Desktop) */
+.login-container {
+    display: flex;
+    width: 100%;
+    height: 100vh; /* Ocupa exactamente el alto de la pantalla visible */
+    flex-direction: row;
+}
+
+/* ==========================================
+   2. PANEL IZQUIERDO (AZUL)
+   ========================================== */
+.panel-blue {
+    background: linear-gradient(135deg, #0f308a 0%, #071e5d 100%);
+    color: #ffffff;
+    width: 50%; /* Se reparte el 50% del ancho con el panel blanco */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empuja el footer al fondo y el contenido al centro */
+    padding: 40px;
+    position: relative;
+}
+
+.version-tag {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    background-color: #2563eb;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.blue-content {
+    margin: auto 0; /* Centrado vertical del bloque de texto e imagen */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.blue-content h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+.blue-content h1 strong {
+    font-weight: 700;
+}
+
+.main-illustration {
+    width: 100%;
+    max-width: 420px; /* Evita que la ilustración se vuelva gigante */
+    height: auto;
+    align-self: center;
+}
+
+.ti-footer {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ==========================================
+   3. PANEL DERECHO (BLANCO)
+   ========================================== */
+.panel-white {
+    background-color: #ffffff;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente el logo y los botones */
+    align-items: center;    /* Centra horizontalmente el contenido */
+    padding: 60px;
+    gap: 50px; /* Espacio controlado entre el logo de Delta y la cuadrícula */
+}
+
+.main-logo {
+    width: 100%;
+    max-width: 320px; /* Tamaño controlado para el logo de Delta */
+    height: auto;
+}
+
+/* Cuadrícula de marcas */
+.brands-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas simétricas */
+    gap: 24px;
+    width: 100%;
+    max-width: 540px; /* Limita el ancho de la rejilla para que no se desarme */
+}
+
+.brand-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 110px; /* Alto fijo para mantener las tarjetas uniformes */
+    border: 1px solid #eaeaea;
+}
+
+.brand-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.brand-card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ajusta los logos internos sin deformarlos */
+}
+
+/* ==========================================
+   4. RESPONSIVE (TABLETS Y CELULARES)
+   ========================================== */
+@media (max-width: 1024px) {
+    body, html {
+        overflow: auto; /* Permite scroll en pantallas pequeñas si falta espacio */
+    }
+
+    .login-container {
+        flex-direction: column; /* Cambia a diseño vertical (uno abajo del otro) */
+        height: auto;
+    }
+
+    .panel-blue, .panel-white {
+        width: 100%; /* Ambos paneles toman todo el ancho */
+        height: auto;
+    }
+
+    .panel-blue {
+        padding: 60px 40px 40px 40px;
+        align-items: center;
+    }
+
+    .blue-content {
+        align-items: center;
+        text-align: center;
+    }
+
+    .panel-white {
+        padding: 50px 20px;
+        gap: 40px;
+    }
+
+    .brands-grid {
+        max-width: 440px; /* Ajuste sutil de tamaño en móviles/tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Celulares muy pequeños: las tarjetas pasan a ser de 1 sola columna */
+    .brands-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .blue-content h1 {
+        font-size: 2rem;
+    }
+}
